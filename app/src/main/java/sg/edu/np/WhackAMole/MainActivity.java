@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
     private void nextLevel() {
         /* Launch advanced page */
         Intent advanceWhackAMole = new Intent(this, Main2Activity.class);
-        advanceWhackAMole.putExtra("Scores", point);
+        advanceWhackAMole.putExtra("Score", point);
         startActivity(advanceWhackAMole);
     }
 
