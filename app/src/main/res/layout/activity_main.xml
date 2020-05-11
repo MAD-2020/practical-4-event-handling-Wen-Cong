@@ -4,4 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+    1 <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="o"
+    android:id= "@+id/ButtonLeft"
+    android:translationX="75dp"
+    android:translationY="250dp"
+    />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="o"
+        android:id="@+id/ButtonMiddle"
+        android:translationX="160dp"
+        android:translationY="250dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="o"
+        android:id="@+id/ButtonRight"
+        android:translationX="245dp"
+        android:translationY="250dp"
+        />
+
+    <TextView
+        android:id="@+id/Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:translationX ="195dp"
+        android:translationY="360dp" />1
+</android.support.constraint.ConstraintLayout>
