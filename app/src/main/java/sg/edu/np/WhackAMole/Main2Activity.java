@@ -26,8 +26,8 @@ public class Main2Activity extends AppCompatActivity {
     private Integer advancedScore;
     private TextView score;
     int previousLocation;
-    private boolean startGame;
     CountDownTimer countDownTimer;
+    CountDownTimer placeMoleTimer;
 
 
 
@@ -46,6 +46,7 @@ public class Main2Activity extends AppCompatActivity {
                 placeMoleTimer();
             }
         };
+        countDownTimer.start();
 
     }
     private void placeMoleTimer(){
@@ -56,14 +57,19 @@ public class Main2Activity extends AppCompatActivity {
            belongs here.
            This is an infinite countdown timer.
          */
-        Timer t = new Timer();
-        t.schedule(new TimerTask(){
-            public void run(){
-                setNewMole();
+        placeMoleTimer = new CountDownTimer(50000, 1000) {
+            @Override
+            public void onTick(long l) {
                 Log.v(TAG, "New Mole Location!");
+                setNewMole();
             }
-        }, 1000);
 
+            @Override
+            public void onFinish() {
+                placeMoleTimer.start();
+            }
+        };
+        placeMoleTimer.start();
     }
     private static final int[] BUTTON_IDS = {
         /* HINT:
@@ -86,6 +92,7 @@ public class Main2Activity extends AppCompatActivity {
         Log.v(TAG, "Current User Score: " + advancedScore);
         score = findViewById(R.id.scoreview);
         score.setText("" + advancedScore);
+        readyTimer();
 
         for(final int id : BUTTON_IDS){
             /*  HINT:
@@ -96,7 +103,7 @@ public class Main2Activity extends AppCompatActivity {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.v(TAG, "Button"+ button.getId() +"Clicked");
+                    Log.v(TAG, "Button "+ button.getId() +" Clicked");
                     doCheck(button);
 
                 }
@@ -106,7 +113,6 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onStart(){
         super.onStart();
-        readyTimer();
     }
     private void doCheck(Button checkButton)
     {
@@ -141,7 +147,6 @@ public class Main2Activity extends AppCompatActivity {
         Button previousButton = findViewById(previousButtonId);
         previousButton.setText("o");
         previousLocation = randomLocation;
-        Log.v(TAG, previousButtonId + " " + ranButton);
     }
 }
 
